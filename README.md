@@ -4,28 +4,24 @@ Comparing **Baseline**, **Single-Agent**, and **Multi-Agent** architectures for 
 
 ## Architecture Overview
 
-![Architecture](/Users/priyabharathiarul/Downloads/AgenticAIinFintech/docs/Architecture.png)
+![Architecture](docs/Architecture.png)
 
 ## Agents
 
 ### 1. Baseline
 One LLM call with no tools — answers from training data alone. Serves as the control group.
 
-![Baseline](/Users/priyabharathiarul/Downloads/AgenticAIinFintech/docs/Baseline.png)
-
-<!-- Add your screenshot: ![Baseline](docs/architecture_baseline.png) -->
+![Baseline](docs/Baseline.png)
 
 ### 2. Single Agent
 One LLM with access to all 7 tools. Loops up to 10 rounds of think → call tool → observe → repeat.
 
-<!-- Add your screenshot: ![Single Agent](docs/architecture_single_agent.png) -->
-![Single Agent](/Users/priyabharathiarul/Downloads/AgenticAIinFintech/docs/SingleAgent.png)
+![Single Agent](docs/SingleAgent.png)
 
 ### 3. Multi-Agent (Parallel Specialists + Aggregator)
 Three specialist agents run in parallel, each with a narrow tool set. An Aggregator merges their outputs into one final answer.
 
-<!-- Add your screenshot: ![Multi-Agent](docs/architecture_multi_agent.png) -->
-![Multi Agent](/Users/priyabharathiarul/Downloads/AgenticAIinFintech/docs/MultiAgent.png)
+![Multi-Agent](docs/MultiAgent.png)
 
 | Component | Role | Tools |
 |---|---|---|
@@ -101,8 +97,8 @@ Full results in [`evaluation/`](evaluation/) and the detailed analysis in [`eval
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/PriyaBharathiArul/Agentic-AI-in-FinTech.git
-cd Agentic-AI-in-FinTech
+git clone https://github.com/PriyaBharathiArul/AgenticAI-in-FinTech.git
+cd AgenticAI-in-FinTech
 pip install -r requirements.txt
 ```
 
