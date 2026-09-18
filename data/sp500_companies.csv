@@ -1,0 +1,31 @@
+Symbol,Shortname,Sector,Industry,Marketcap,Exchange
+AAPL,Apple Inc.,Technology,Consumer Electronics,2800000000000,NASDAQ
+MSFT,Microsoft Corporation,Technology,Software - Infrastructure,2600000000000,NASDAQ
+NVDA,NVIDIA Corporation,Technology,Semiconductors,1200000000000,NASDAQ
+GOOGL,Alphabet Inc.,Technology,Internet Content & Information,1700000000000,NASDAQ
+AMZN,Amazon.com Inc.,Consumer Cyclical,Internet Retail,1500000000000,NASDAQ
+META,Meta Platforms Inc.,Technology,Internet Content & Information,800000000000,NASDAQ
+TSLA,Tesla Inc.,Consumer Cyclical,Auto Manufacturers,700000000000,NASDAQ
+AMD,Advanced Micro Devices Inc.,Technology,Semiconductors,200000000000,NASDAQ
+INTC,Intel Corporation,Technology,Semiconductors,130000000000,NASDAQ
+AVGO,Broadcom Inc.,Technology,Semiconductors,350000000000,NASDAQ
+QCOM,QUALCOMM Incorporated,Technology,Semiconductors,150000000000,NASDAQ
+TXN,Texas Instruments Incorporated,Technology,Semiconductors,160000000000,NASDAQ
+MU,Micron Technology Inc.,Technology,Semiconductors,80000000000,NASDAQ
+NFLX,Netflix Inc.,Communication Services,Entertainment,190000000000,NASDAQ
+CRM,Salesforce Inc.,Technology,Software - Application,210000000000,NYSE
+JPM,JPMorgan Chase & Co.,Financial Services,Banks - Diversified,430000000000,NYSE
+GS,Goldman Sachs Group Inc.,Financial Services,Capital Markets,120000000000,NYSE
+BAC,Bank of America Corporation,Financial Services,Banks - Diversified,260000000000,NYSE
+MS,Morgan Stanley,Financial Services,Capital Markets,150000000000,NYSE
+WFC,Wells Fargo & Company,Financial Services,Banks - Diversified,170000000000,NYSE
+XOM,Exxon Mobil Corporation,Energy,Oil & Gas Integrated,450000000000,NYSE
+CVX,Chevron Corporation,Energy,Oil & Gas Integrated,300000000000,NYSE
+COP,ConocoPhillips,Energy,Oil & Gas Exploration & Production,130000000000,NYSE
+SLB,Schlumberger Limited,Energy,Oil & Gas Equipment & Services,70000000000,NYSE
+EOG,EOG Resources Inc.,Energy,Oil & Gas Exploration & Production,65000000000,NYSE
+JNJ,Johnson & Johnson,Healthcare,Drug Manufacturers - General,420000000000,NYSE
+UNH,UnitedHealth Group Incorporated,Healthcare,Healthcare Plans,480000000000,NYSE
+PFE,Pfizer Inc.,Healthcare,Drug Manufacturers - General,160000000000,NYSE
+ABBV,AbbVie Inc.,Healthcare,Drug Manufacturers - General,280000000000,NYSE
+LLY,Eli Lilly and Company,Healthcare,Drug Manufacturers - General,400000000000,NYSE

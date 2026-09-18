@@ -1,0 +1,303 @@
+<title>The 7 Tools</title>
+<style>
+  :root{
+    --bg:#eef1ee;
+    --surface:#ffffff;
+    --border:#cdd6d0;
+    --ink:#12211c;
+    --ink-dim:#57655f;
+    --accent:#0e6b52;
+    --accent-soft:#dcece5;
+    --gold:#a9791f;
+    --gold-soft:#f2e6c9;
+    --bad:#9c3f36;
+    --bad-soft:#f3e0dd;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+    --sans: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1613; --surface:#16211d; --border:#2b3a34; --ink:#e9efec; --ink-dim:#9db0a8;
+      --accent:#3fcba0; --accent-soft:#173c31; --gold:#e0b559; --gold-soft:#3a2f14;
+      --bad:#e6857c; --bad-soft:#3a201d;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f1613; --surface:#16211d; --border:#2b3a34; --ink:#e9efec; --ink-dim:#9db0a8;
+    --accent:#3fcba0; --accent-soft:#173c31; --gold:#e0b559; --gold-soft:#3a2f14;
+    --bad:#e6857c; --bad-soft:#3a201d;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    padding-inline:16px; padding-block:36px; display:flex; justify-content:center;
+  }
+  main{width:100%;max-width:720px;}
+
+  h1{font-size:clamp(22px,5vw,30px);font-weight:700;letter-spacing:-0.01em;margin:0 0 6px;text-wrap:balance;}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;}
+  .lede{color:var(--ink-dim);font-size:15px;line-height:1.55;max-width:62ch;margin:0 0 20px;}
+
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;font-family:var(--mono);color:var(--ink-dim);
+    border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:10px 14px;margin-bottom:28px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:11px;height:11px;border-radius:3px;display:inline-block;}
+
+  section.tool{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 18px 18px;margin-bottom:18px;}
+  section.tool h2{font-size:16.5px;margin:0 0 2px;font-family:var(--mono);display:flex;align-items:baseline;gap:8px;}
+  section.tool h2 .n{color:var(--ink-dim);font-weight:400;}
+  section.tool .strap{color:var(--ink-dim);font-size:13.5px;margin:0 0 14px;line-height:1.5;}
+
+  figure{margin:0 0 10px;}
+  figure svg{width:100%;height:auto;display:block;overflow:visible;}
+  figcaption{font-size:12px;color:var(--ink-dim);margin-top:6px;line-height:1.5;}
+
+  .label-text{font-family:var(--mono);font-size:10.5px;fill:currentColor;}
+  .body-text{font-family:var(--sans);font-size:11.5px;fill:currentColor;}
+  .arrow-label{font-family:var(--mono);font-size:9px;fill:var(--ink-dim);}
+
+  .box{fill:var(--surface);stroke:var(--border);stroke-width:1.3;}
+  .box-accent{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.3;}
+  .box-gold{fill:var(--gold-soft);stroke:var(--gold);stroke-width:1.3;}
+  .box-bad{fill:var(--bad-soft);stroke:var(--bad);stroke-width:1.2;stroke-dasharray:3 3;}
+  .line{stroke:currentColor;stroke-width:1.2;fill:none;color:var(--ink-dim);}
+  .line-accent{stroke:var(--accent);stroke-width:1.5;fill:none;}
+  .line-gold{stroke:var(--gold);stroke-width:1.4;fill:none;stroke-dasharray:4 3;}
+
+  footer{font-family:var(--mono);font-size:11px;color:var(--ink-dim);text-align:center;margin-top:6px;}
+</style>
+
+<main>
+  <p class="kicker">MP3 · Agentic AI in FinTech</p>
+  <h1>What each tool actually does</h1>
+  <p class="lede">Every tool takes arguments the model chose, reaches for one data source, and hands back JSON the model reads as its next "observation." Solid green is the real/primary path; dashed gold is a fallback that fires when the primary path fails or is unavailable.</p>
+
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--accent)"></span>real / primary source</span>
+    <span><span class="swatch" style="background:var(--gold)"></span>fallback path</span>
+    <span><span class="swatch" style="background:var(--bad)"></span>guardrail / blocked</span>
+  </div>
+
+  <!-- 1 -->
+  <section class="tool">
+    <h2><span class="n">1 /</span> get_tickers_by_sector(sector)</h2>
+    <p class="strap">"Which companies are in this sector?" — a lookup, not a live-data question.</p>
+    <figure>
+      <svg viewBox="0 0 640 150" role="img" aria-label="get_tickers_by_sector first tries an exact sector match against stocks.db; if that returns nothing it falls back to a fuzzy industry search.">
+        <defs><marker id="t1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect x="14" y="52" width="118" height="46" rx="8" class="box"/>
+        <text x="73" y="72" text-anchor="middle" class="label-text">sector: "semiconductor"</text>
+        <text x="73" y="87" text-anchor="middle" class="arrow-label">(model's argument)</text>
+
+        <line x1="132" y1="60" x2="196" y2="45" class="line-accent" marker-end="url(#t1)"/>
+        <text x="164" y="35" text-anchor="middle" class="arrow-label">exact match</text>
+        <line x1="132" y1="88" x2="196" y2="103" class="line-gold" marker-end="url(#t1)"/>
+        <text x="164" y="122" text-anchor="middle" class="arrow-label">if 0 rows → LIKE industry</text>
+
+        <rect x="200" y="20" width="150" height="42" rx="8" class="box-accent"/>
+        <text x="275" y="45" text-anchor="middle" class="body-text">sector = ?</text>
+        <rect x="200" y="90" width="150" height="42" rx="8" class="box-gold"/>
+        <text x="275" y="115" text-anchor="middle" class="body-text">industry LIKE %?%</text>
+
+        <line x1="350" y1="41" x2="420" y2="66" class="line-accent" marker-end="url(#t1)"/>
+        <line x1="350" y1="111" x2="420" y2="80" class="line-gold" marker-end="url(#t1)"/>
+
+        <rect x="424" y="40" width="90" height="46" rx="8" class="box"/>
+        <text x="469" y="68" text-anchor="middle" class="body-text" font-weight="600">stocks.db</text>
+
+        <line x1="514" y1="63" x2="584" y2="63" class="line" marker-end="url(#t1)"/>
+        <rect x="516" y="106" width="118" height="34" rx="8" class="box"/>
+        <text x="575" y="127" text-anchor="middle" class="label-text">{sector, stocks:[...]}</text>
+        <line x1="469" y1="86" x2="530" y2="106" class="line" stroke-dasharray="2 3"/>
+      </svg>
+    </figure>
+    <figcaption>No network call at all — everything comes from the local database built in Step 1. If both queries come back empty, it returns an error object rather than an empty list.</figcaption>
+  </section>
+
+  <!-- 2 -->
+  <section class="tool">
+    <h2><span class="n">2 /</span> get_price_performance(tickers, period)</h2>
+    <p class="strap">"How has this stock moved?" — always changing, so it always has to be fetched live.</p>
+    <figure>
+      <svg viewBox="0 0 640 140" role="img" aria-label="get_price_performance loops one ticker at a time through yfinance.download, computing percent change from start to end price, with a per-ticker error on failure.">
+        <defs><marker id="t2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect x="14" y="46" width="130" height="48" rx="8" class="box"/>
+        <text x="79" y="66" text-anchor="middle" class="label-text">['AAPL','MSFT'], '1y'</text>
+        <text x="79" y="81" text-anchor="middle" class="arrow-label">one ticker at a time</text>
+
+        <line x1="144" y1="70" x2="210" y2="70" class="line-accent" marker-end="url(#t2)"/>
+
+        <rect x="214" y="40" width="150" height="60" rx="8" class="box-accent"/>
+        <text x="289" y="62" text-anchor="middle" class="body-text" font-weight="600">yfinance.download()</text>
+        <text x="289" y="78" text-anchor="middle" class="label-text">auto_adjust=True</text>
+        <text x="289" y="92" text-anchor="middle" class="label-text">stdout/stderr silenced</text>
+
+        <line x1="364" y1="60" x2="434" y2="50" class="line" marker-end="url(#t2)"/>
+        <rect x="438" y="24" width="180" height="42" rx="8" class="box"/>
+        <text x="528" y="42" text-anchor="middle" class="label-text">pct_change = (end-start)/start</text>
+        <text x="528" y="56" text-anchor="middle" class="label-text">rounded to 2 decimals</text>
+
+        <line x1="364" y1="82" x2="434" y2="100" class="line" stroke="var(--bad)" marker-end="url(#t2)"/>
+        <rect x="438" y="86" width="180" height="38" rx="8" class="box-bad"/>
+        <text x="528" y="109" text-anchor="middle" class="label-text">empty data → per-ticker error</text>
+      </svg>
+    </figure>
+    <figcaption>One bad or delisted ticker only fails its own entry — the rest of the batch still returns real numbers, which is why a run can survive a 404 on one symbol mid-batch.</figcaption>
+  </section>
+
+  <!-- 3 -->
+  <section class="tool">
+    <h2><span class="n">3 /</span> get_company_overview(ticker)</h2>
+    <p class="strap">"What's this company's P/E, EPS, market cap?" — fundamentals that shift every trading session.</p>
+    <figure>
+      <svg viewBox="0 0 640 150" role="img" aria-label="get_company_overview tries a real Alpha Vantage HTTP call first with a 3 second timeout; if that fails it falls back to an in process mock built from yfinance dot info.">
+        <defs><marker id="t3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect x="14" y="54" width="90" height="42" rx="8" class="box"/>
+        <text x="59" y="79" text-anchor="middle" class="label-text">ticker: "AAPL"</text>
+
+        <line x1="104" y1="60" x2="176" y2="35" class="line-accent" marker-end="url(#t3)"/>
+        <text x="140" y="24" text-anchor="middle" class="arrow-label">try first, 3s timeout</text>
+        <rect x="180" y="10" width="180" height="46" rx="8" class="box-accent"/>
+        <text x="270" y="30" text-anchor="middle" class="body-text" font-weight="600">Alpha Vantage HTTP</text>
+        <text x="270" y="46" text-anchor="middle" class="label-text">real endpoint, rate-limited</text>
+
+        <line x1="104" y1="88" x2="176" y2="106" class="line-gold" marker-end="url(#t3)"/>
+        <text x="140" y="125" text-anchor="middle" class="arrow-label">on failure/timeout</text>
+        <rect x="180" y="86" width="180" height="46" rx="8" class="box-gold"/>
+        <text x="270" y="106" text-anchor="middle" class="body-text" font-weight="600">mock: yfinance .info</text>
+        <text x="270" y="122" text-anchor="middle" class="label-text">reshaped to AV field names</text>
+
+        <line x1="360" y1="33" x2="424" y2="60" class="line" marker-end="url(#t3)"/>
+        <line x1="360" y1="109" x2="424" y2="80" class="line" marker-end="url(#t3)"/>
+        <rect x="428" y="50" width="196" height="60" rx="8" class="box"/>
+        <text x="526" y="70" text-anchor="middle" class="label-text">pe_ratio, eps, market_cap,</text>
+        <text x="526" y="85" text-anchor="middle" class="label-text">52w_high, 52w_low</text>
+        <text x="526" y="100" text-anchor="middle" class="arrow-label">cached per ticker in-process</text>
+      </svg>
+    </figure>
+    <figcaption>The real endpoint is tried every time but virtually always falls through in practice — the mock is what actually answers most calls, sourced from real yfinance data reshaped to look like Alpha Vantage's fields.</figcaption>
+  </section>
+
+  <!-- 4 -->
+  <section class="tool">
+    <h2><span class="n">4 /</span> get_market_status()</h2>
+    <p class="strap">"Is the market open right now?" — a question about the current moment, which the model has no concept of.</p>
+    <figure>
+      <svg viewBox="0 0 640 118" role="img" aria-label="get_market_status is pure computation from the current time in three timezones against fixed trading hours, with no external call at all.">
+        <defs><marker id="t4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect x="14" y="36" width="120" height="46" rx="8" class="box"/>
+        <text x="74" y="56" text-anchor="middle" class="body-text">no arguments</text>
+        <text x="74" y="71" text-anchor="middle" class="arrow-label">just "now"</text>
+
+        <line x1="134" y1="59" x2="200" y2="59" class="line-accent" marker-end="url(#t4)"/>
+
+        <rect x="204" y="20" width="220" height="78" rx="8" class="box-accent"/>
+        <text x="314" y="42" text-anchor="middle" class="body-text" font-weight="600">datetime.now(ZoneInfo)</text>
+        <text x="314" y="60" text-anchor="middle" class="label-text">NY 9:30–16:15 · London 8–16:30</text>
+        <text x="314" y="76" text-anchor="middle" class="label-text">Tokyo 9:00–15:00, weekday check</text>
+        <text x="314" y="92" text-anchor="middle" class="arrow-label">no holiday calendar</text>
+
+        <line x1="424" y1="59" x2="490" y2="59" class="line" marker-end="url(#t4)"/>
+        <rect x="494" y="38" width="130" height="42" rx="8" class="box"/>
+        <text x="559" y="63" text-anchor="middle" class="label-text">open / closed × 3 regions</text>
+      </svg>
+    </figure>
+    <figcaption>The only tool with zero network dependency — everything it needs is the system clock and a fixed trading-hours table, which is also why it can't account for market holidays.</figcaption>
+  </section>
+
+  <!-- 5 -->
+  <section class="tool">
+    <h2><span class="n">5 /</span> get_top_gainers_losers()</h2>
+    <p class="strap">"What's moving today across the whole market?" — no single stock to ask about, so a scrape instead of an API.</p>
+    <figure>
+      <svg viewBox="0 0 640 140" role="img" aria-label="get_top_gainers_losers scrapes three Yahoo Finance pages; if the scrape fails or returns nothing it falls back to randomly generated plausible movers.">
+        <defs><marker id="t5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect x="14" y="46" width="110" height="46" rx="8" class="box"/>
+        <text x="69" y="66" text-anchor="middle" class="body-text">no arguments</text>
+
+        <line x1="124" y1="60" x2="190" y2="38" class="line-accent" marker-end="url(#t5)"/>
+        <rect x="194" y="12" width="220" height="52" rx="8" class="box-accent"/>
+        <text x="304" y="32" text-anchor="middle" class="body-text" font-weight="600">BeautifulSoup scrape</text>
+        <text x="304" y="48" text-anchor="middle" class="label-text">3 Yahoo Finance pages, &lt;td&gt; by index</text>
+
+        <line x1="124" y1="76" x2="190" y2="100" class="line-gold" marker-end="url(#t5)"/>
+        <text x="150" y="120" text-anchor="middle" class="arrow-label">scrape fails/empty</text>
+        <rect x="194" y="86" width="220" height="46" rx="8" class="box-gold"/>
+        <text x="304" y="106" text-anchor="middle" class="body-text" font-weight="600">random fallback</text>
+        <text x="304" y="121" text-anchor="middle" class="label-text">20 well-known tickers, fake numbers</text>
+
+        <line x1="414" y1="36" x2="480" y2="60" class="line" marker-end="url(#t5)"/>
+        <line x1="414" y1="108" x2="480" y2="80" class="line" marker-end="url(#t5)"/>
+        <rect x="484" y="50" width="140" height="46" rx="8" class="box-bad"/>
+        <text x="554" y="68" text-anchor="middle" class="label-text">output never says</text>
+        <text x="554" y="82" text-anchor="middle" class="label-text">which path it came from</text>
+      </svg>
+    </figure>
+    <figcaption>Fragile by nature — a Yahoo HTML layout change silently trips the fallback, and the returned JSON gives no signal for which source actually answered.</figcaption>
+  </section>
+
+  <!-- 6 -->
+  <section class="tool">
+    <h2><span class="n">6 /</span> get_news_sentiment(ticker, limit)</h2>
+    <p class="strap">"How is the market feeling about this stock?" — real headlines, but a sentiment label with no real analysis behind it.</p>
+    <figure>
+      <svg viewBox="0 0 640 150" role="img" aria-label="get_news_sentiment fetches real headlines from yfinance, but every headline including real ones gets a randomly assigned bullish to bearish label rather than an analyzed one; missing headlines are padded with templated fake ones.">
+        <defs><marker id="t6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect x="14" y="52" width="100" height="46" rx="8" class="box"/>
+        <text x="64" y="72" text-anchor="middle" class="label-text">ticker, limit=5</text>
+
+        <line x1="114" y1="70" x2="176" y2="45" class="line-accent" marker-end="url(#t6)"/>
+        <rect x="180" y="16" width="170" height="50" rx="8" class="box-accent"/>
+        <text x="265" y="36" text-anchor="middle" class="body-text" font-weight="600">yfinance .news</text>
+        <text x="265" y="52" text-anchor="middle" class="label-text">real titles + sources</text>
+
+        <line x1="114" y1="90" x2="176" y2="112" class="line-gold" marker-end="url(#t6)"/>
+        <text x="140" y="128" text-anchor="middle" class="arrow-label">if short of "limit"</text>
+        <rect x="180" y="90" width="170" height="50" rx="8" class="box-gold"/>
+        <text x="265" y="110" text-anchor="middle" class="body-text" font-weight="600">templated fake headlines</text>
+        <text x="265" y="126" text-anchor="middle" class="label-text">9-headline rotating set</text>
+
+        <line x1="350" y1="41" x2="410" y2="65" class="line" marker-end="url(#t6)"/>
+        <line x1="350" y1="115" x2="410" y2="85" class="line" marker-end="url(#t6)"/>
+        <rect x="414" y="52" width="210" height="66" rx="8" class="box-bad"/>
+        <text x="519" y="72" text-anchor="middle" class="label-text">sentiment = random.choices(</text>
+        <text x="519" y="86" text-anchor="middle" class="label-text">weighted Bullish…Bearish)</text>
+        <text x="519" y="103" text-anchor="middle" class="arrow-label">applied to real AND fake alike</text>
+      </svg>
+    </figure>
+    <figcaption>The headline is honest, the label isn't — real or fabricated headlines get the exact same random-sentiment treatment, and nothing in the output distinguishes them.</figcaption>
+  </section>
+
+  <!-- 7 -->
+  <section class="tool">
+    <h2><span class="n">7 /</span> query_local_db(sql)</h2>
+    <p class="strap">The escape hatch — anything the other 6 fixed tools can't express as a question.</p>
+    <figure>
+      <svg viewBox="0 0 640 130" role="img" aria-label="query_local_db checks that the SQL string starts with SELECT, then runs it directly against stocks.db, returning rows and columns or an error.">
+        <defs><marker id="t7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+        <rect x="14" y="42" width="160" height="50" rx="8" class="box"/>
+        <text x="94" y="62" text-anchor="middle" class="label-text">sql: model-written</text>
+        <text x="94" y="77" text-anchor="middle" class="arrow-label">e.g. SELECT ... WHERE ...</text>
+
+        <line x1="174" y1="67" x2="238" y2="67" class="line" marker-end="url(#t7)"/>
+        <rect x="242" y="42" width="150" height="50" rx="8" class="box-bad"/>
+        <text x="317" y="62" text-anchor="middle" class="body-text" font-weight="600">starts with "select"?</text>
+        <text x="317" y="78" text-anchor="middle" class="label-text">prefix check only</text>
+
+        <line x1="392" y1="55" x2="452" y2="30" class="line-accent" marker-end="url(#t7)"/>
+        <text x="420" y="18" text-anchor="middle" class="arrow-label">yes</text>
+        <rect x="456" y="8" width="160" height="42" rx="8" class="box-accent"/>
+        <text x="536" y="33" text-anchor="middle" class="label-text">sqlite3.execute() → rows</text>
+
+        <line x1="392" y1="80" x2="452" y2="105" class="line" marker-end="url(#t7)"/>
+        <text x="420" y="122" text-anchor="middle" class="arrow-label">no</text>
+        <rect x="456" y="82" width="160" height="42" rx="8" class="box"/>
+        <text x="536" y="107" text-anchor="middle" class="label-text">{"error": "SELECT only"}</text>
+      </svg>
+    </figure>
+    <figcaption>The only guardrail is a string-prefix check, not a real SQL parser — enough to stop an obvious DROP or UPDATE, but not a rigorous validator.</figcaption>
+  </section>
+
+  <footer>same data, seven different shapes of question — each tool exists because the other six couldn't answer that one</footer>
+</main>
