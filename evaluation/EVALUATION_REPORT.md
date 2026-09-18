@@ -6,11 +6,11 @@
 
 ## GPT-4o-mini Results
 
-| Architecture | Easy (5Q) | Medium (5Q) | Hard (5Q) | Overall (15Q) | Hallucinations |
-|---|---|---|---|---|---|
-| Baseline | 26.7% | 46.7% | 46.7% | 40.0% | 3 |
-| Single Agent | 46.7% | 53.3% | 20.0% | 40.0% | 9 |
-| Multi-Agent | 66.7% | 46.7% | 33.3% | 48.9% | 4 |
+| Architecture | Easy (5Q) | Medium (5Q) | Hard (5Q) | Overall (15Q) |
+|---|---|---|---|---|
+| Baseline | 27% | 47% | 47% | 40% |
+| Single Agent | 47% | 53% | 20% | 40% |
+| Multi-Agent | 67% | 47% | 33% | 49% |
 
 **Average response time:** Baseline 2.9s · Single Agent 6.0s · Multi-Agent 10.7s
 
@@ -18,11 +18,11 @@
 
 ## GPT-4o Results
 
-| Architecture | Easy (5Q) | Medium (5Q) | Hard (5Q) | Overall (15Q) | Hallucinations |
-|---|---|---|---|---|---|
-| Baseline | 13.3% | 33.3% | 33.3% | 26.7% | 3 |
-| Single Agent | 86.7% | 53.3% | 26.7% | 55.6% | 6 |
-| Multi-Agent | 66.7% | 60.0% | 33.3% | 53.3% | 2 |
+| Architecture | Easy (5Q) | Medium (5Q) | Hard (5Q) | Overall (15Q) |
+|---|---|---|---|---|
+| Baseline | 13% | 33% | 33% | 27% |
+| Single Agent | 87% | 53% | 27% | 56% |
+| Multi-Agent | 67% | 60% | 33% | 53% |
 
 **Average response time:** Baseline 2.1s · Single Agent 3.8s · Multi-Agent 5.8s
 
