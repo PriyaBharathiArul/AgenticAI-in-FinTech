@@ -48,19 +48,10 @@ Three specialist agents run in parallel, each with a narrow tool set. An Aggrega
 
 ### GPT-4o-mini
 
-| Architecture | Easy | Medium | Hard | Overall | Hallucinations |
-|---|---|---|---|---|---|
-| Baseline | 26.7% | 46.7% | 46.7% | 40.0% | 3 |
-| Single Agent | 46.7% | 53.3% | 20.0% | 40.0% | 9 |
-| **Multi-Agent** | **66.7%** | 46.7% | 33.3% | **48.9%** | 4 |
+![gpt4o_mini](docs/gpt4o_mini.png)
 
 ### GPT-4o
-
-| Architecture | Easy | Medium | Hard | Overall | Hallucinations |
-|---|---|---|---|---|---|
-| Baseline | 13.3% | 33.3% | 33.3% | 26.7% | 3 |
-| **Single Agent** | **86.7%** | 53.3% | 26.7% | **55.6%** | 6 |
-| Multi-Agent | 66.7% | **60.0%** | 33.3% | 53.3% | **2** |
+![gpt4o](docs/gpt4o.png)
 
 Full results in [`evaluation/`](evaluation/) and the detailed analysis in [`evaluation/EVALUATION_REPORT.md`](evaluation/EVALUATION_REPORT.md).
 
@@ -124,6 +115,10 @@ python -c "from tools import create_local_database; create_local_database()"
 ```bash
 streamlit run app.py
 ```
+### App Demo
+
+![Chatbot_demo](docs/Chatbot_demo.png)
+
 
 ### 5. Run the benchmark evaluation (optional)
 
